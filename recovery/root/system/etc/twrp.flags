@@ -1,0 +1,67 @@
+# Android fstab file.
+# The filesystem that contains the filesystem checker binary (typically /system) cannot
+# specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
+
+# mount_point  fstype   device            device2                      flags
+
+# Other partitions
+/boot               emmc    /dev/block/bootdevice/by-name/boot             flags=backup=1;display="Boot";flashimg=1
+/recovery           emmc    /dev/block/bootdevice/by-name/recovery         flags=backup=1;display="Recovery";flashimg=1
+/dtbo               emmc    /dev/block/bootdevice/by-name/dtbo             flags=backup=1;display="Dtbo";flashimg=1
+/cache              ext4    /dev/block/bootdevice/by-name/cache            flags=backup=1;display="Cache";wipeingui
+/metadata           ext4    /dev/block/bootdevice/by-name/metadata         flags=display="Metadata";wrappedkey
+/data               f2fs    /dev/block/bootdevice/by-name/userdata         flags=fileencryption=aes-256-xts:aes-256-cts:v2+inlinecrypt_optimized+wrappedkey_v0,keydirectory=/metadata/vold/metadata_encryption,metadata_encryption=aes-256-xts:wrappedkey_v0
+
+# System
+/system             ext4    /dev/block/bootdevice/by-name/system           flags=slotselect;display="System";backup=1;wipeingui
+/system_image       emmc    /dev/block/bootdevice/by-name/system           flags=slotselect;flashimg=1
+/vendor             ext4    /dev/block/bootdevice/by-name/vendor           flags=slotselect;display="Vendor";backup=1;wipeingui
+/vendor_image       emmc    /dev/block/bootdevice/by-name/vendor           flags=slotselect;flashimg=1
+/product            ext4    /dev/block/bootdevice/by-name/product          flags=slotselect;display="Product";backup=1
+/product_image      emmc    /dev/block/bootdevice/by-name/product          flags=slotselect;flashimg=1
+/odm                ext4    /dev/block/bootdevice/by-name/odm              display="ODM";logical
+/odm_image          emmc    /dev/block/bootdevice/by-name/odm              flags=display="ODM";flashimg;backup=1
+/system_ext         ext4    /dev/block/bootdevice/by-name/system_ext       logical
+/system_ext_image   emmc    /dev/block/bootdevice/by-name/system_ext       flags=slotselect;flashimg=1
+
+/system             erofs   /dev/block/bootdevice/by-name/system           display="system";logical
+/vendor             erofs   /dev/block/bootdevice/by-name/vendor           display="Vendor";logical
+/product            erofs   /dev/block/bootdevice/by-name/product          display="Product";logical
+/odm                erofs   /dev/block/bootdevice/by-name/odm              display="ODM";logical
+/system_ext         erofs   /dev/block/bootdevice/by-name/system_ext       display="system_ext";logical
+
+# AVB partitions
+/dtbo               emmc    /dev/block/bootdevice/by-name/dtbo             flags=display="Dtbo";flashimg;backup=1
+/vbmeta             emmc    /dev/block/bootdevice/by-name/vbmeta           flags=display="Vbmeta";flashimg;backup=1
+/vbmeta_system      emmc    /dev/block/bootdevice/by-name/vbmeta_system    flags=display="Vbmeta-System";flashimg;backup=1
+/vbmeta_vendor      emmc    /dev/block/bootdevice/by-name/vbmeta_vendor    flags=display="Vbmeta-Vendor";flashimg;backup=1
+
+# Persistent Firmware & Properties
+/persist            ext4    /dev/block/bootdevice/by-name/persist          flags=display="Persist"
+/persist_image      emmc    /dev/block/bootdevice/by-name/persist          flags=backup=1;display="Persist-Image";flashimg;backup=1
+
+# Modem partitions
+/modem              emmc    /dev/block/bootdevice/by-name/modem            flags=backup=1;display="Modem"
+/bluetooth          emmc    /dev/block/bootdevice/by-name/bluetooth        flags=backup=1;subpartitionof=/modem
+/dsp                emmc    /dev/block/bootdevice/by-name/dsp              flags=backup=1;subpartitionof=/modem
+
+# EFS partitions
+/efs1               emmc    /dev/block/bootdevice/by-name/modemst1         flags=backup=1;display=EFS
+/efs2               emmc    /dev/block/bootdevice/by-name/modemst2         flags=backup=1;subpartitionof=/efs1
+/efsc               emmc    /dev/block/bootdevice/by-name/fsc              flags=backup=1;subpartitionof=/efs1
+/efsg               emmc    /dev/block/bootdevice/by-name/fsg              flags=backup=1;subpartitionof=/efs1
+
+# Removable storage
+/usb_otg            auto    /dev/block/sdg1       /dev/block/sdg           flags=display="USB-Storage";storage;wipeingui;removable;fsflags="utf8"
+
+/my_bigball         emmc    /dev/block/bootdevice/by-name/my_bigball       flags=display="my_bigball";flashimg;backup=1
+/my_carrier         emmc    /dev/block/bootdevice/by-name/my_carrier       flags=display="my_carrier";flashimg;backup=1
+/my_company         emmc    /dev/block/bootdevice/by-name/my_company       flags=display="my_company";flashimg;backup=1
+/my_custom          emmc    /dev/block/bootdevice/by-name/my_custom        flags=display="my_custom";flashimg;backup=1
+/my_engineering     emmc    /dev/block/bootdevice/by-name/my_engineering   flags=display="my_engineering";flashimg;backup=1
+/my_heytap          emmc    /dev/block/bootdevice/by-name/my_heytap        flags=display="my_heytap";flashimg;backup=1
+/my_manifest        emmc    /dev/block/bootdevice/by-name/my_manifest      flags=display="my_manifest";flashimg;backup=1
+/my_preload         emmc    /dev/block/bootdevice/by-name/my_preload       flags=display="my_preload";flashimg;backup=1
+/my_product         emmc    /dev/block/bootdevice/by-name/my_product       flags=display="my_product";flashimg;backup=1
+/my_region          emmc    /dev/block/bootdevice/by-name/my_region        flags=display="my_region";flashimg;backup=1
+/my_stock           emmc    /dev/block/bootdevice/by-name/my_stock         flags=display="my_stock";flashimg;backup=1

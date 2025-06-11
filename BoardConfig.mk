@@ -132,6 +132,7 @@ TW_THEME := portrait_hdpi
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_INCLUDE_LOGICAL := my_bigball my_carrier my_company my_custom my_engineering my_heytap my_manifest my_preload my_product my_region my_stock
 TARGET_USES_MKE2FS := true
+TW_Y_OFFSET := 115
 TW_H_OFFSET := -115
 
 # Kernel module loading

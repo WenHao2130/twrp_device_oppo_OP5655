@@ -129,6 +129,7 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_INCLUDE_RESETPROP := true
 TW_NEW_ION_HEAP := true
 TW_THEME := portrait_hdpi
+TW_NO_SCREEN_BLANK := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TW_INCLUDE_LOGICAL := my_bigball my_carrier my_company my_custom my_engineering my_heytap my_manifest my_preload my_product my_region my_stock
 TARGET_USES_MKE2FS := true

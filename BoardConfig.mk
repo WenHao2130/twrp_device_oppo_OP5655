@@ -119,6 +119,7 @@ PLATFORM_VERSION := 127
 BOARD_VNDK_VERSION := current
 
 # TWRP Configurations
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/virtual/thermal/thermal_zone4/temp
 TW_BRIGHTNESS_PATH := /sys/class/backlight/panel0-backlight/brightness
 TW_MAX_BRIGHTNESS := 3515
 TW_DEFAULT_BRIGHTNESS := 1023

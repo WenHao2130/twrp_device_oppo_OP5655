@@ -17,6 +17,7 @@
 /system_image       emmc    /dev/block/bootdevice/by-name/system           flags=slotselect;flashimg=1
 /vendor             ext4    /dev/block/bootdevice/by-name/vendor           flags=slotselect;display="Vendor";backup=1;wipeingui
 /vendor_image       emmc    /dev/block/bootdevice/by-name/vendor           flags=slotselect;flashimg=1
+/vendor_boot        emmc    /dev/block/bootdevice/by-name/vendor_boot      flags=display="vendor_boot";slotselect;backup=1;flashimg=1
 /product            ext4    /dev/block/bootdevice/by-name/product          flags=slotselect;display="Product";backup=1
 /product_image      emmc    /dev/block/bootdevice/by-name/product          flags=slotselect;flashimg=1
 /odm                ext4    /dev/block/bootdevice/by-name/odm              display="ODM";logical
